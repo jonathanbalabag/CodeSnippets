@@ -1,0 +1,34 @@
+   public static void greedy(double owed)
+       {
+           int counter = 0;
+           int i;
+
+           int[,] Sel = {{100,0}, {25,0}, {10,0}, {5,0}, {1,0} };
+
+           string[] cents = { "dollars", "quarters", "dimes", "nickels", "pennies" };
+
+           i = (int) Math.Round((owed * 100));
+
+           for (int j = 0; j < Sel.GetLength(0); j++)
+           {
+               while (i >=Sel[j,0])
+               {
+                   i -= Sel[j, 0];
+                   Sel[j, 1]++;
+
+                   counter++;
+               }
+
+           }
+
+           for (int k = 0; k< Sel.GetLength(0); k++)
+           {
+               if (Sel[k, 1]>0)
+               Console.WriteLine( cents[k] + " : " + Sel[k,1] + " cents");
+
+           }
+
+               Console.Write(counter + " pcs of coins");
+
+
+       }
